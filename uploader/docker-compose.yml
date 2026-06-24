@@ -6,7 +6,7 @@ services:
       - STORAGE_PATH=/var/www/repo
       - PORT=3001
     volumes:
-      - ./storage:/var/www/repo
+      - uploader-storage:/var/www/repo
     restart: unless-stopped
 
   nginx:
@@ -17,10 +17,10 @@ services:
       - .env
     volumes:
       - ./nginx/default.conf.template:/etc/nginx/templates/default.conf.template:ro
-      - ./storage:/var/www/repo
+      - uploader-storage:/var/www/repo
     depends_on:
       - uploader
     restart: unless-stopped
 
 volumes:
-  uploader-sotrage:
+  uploader-storage:
