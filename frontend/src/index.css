@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import "@fontsource/roboto";
+@import '@fontsource/roboto/700.css';  /* Bold */
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+@theme {
+        --color-primary-extradark: #142399;
+        --color-primary-dark: #162456;    
+        --color-primary: #3B82F6;    
+        --color-primary-light: #DBEAFE;
+        --color-bg-white: #FFFFFF;      
+        
+        --color-success: #10B981;
+        --color-warning: #F59E0B;   
+        --color-error: #EF4444;     
+}

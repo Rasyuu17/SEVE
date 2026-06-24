@@ -1,0 +1,23 @@
+# docker-compose.yml
+services:
+  gseve-front:
+    build: ./frontend
+    image: gseve-front:latest
+    ports:
+      - "8081:80"
+    depends_on:
+      - gseve-api
+    networks:
+      - gseve-net
+
+  gseve-api:
+    build: ./backend
+    image: gseve-api:latest
+    env_file:
+      - ./backend/.env
+    networks:
+      - gseve-net
+
+networks:
+  gseve-net:
+    driver: bridge
