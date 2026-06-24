@@ -1,0 +1,26 @@
+services:
+  uploader:
+    build: .
+    container_name: uploader
+    environment:
+      - STORAGE_PATH=/var/www/repo
+      - PORT=3001
+    volumes:
+      - ./storage:/var/www/repo
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    env_file:
+      - .env
+    volumes:
+      - ./nginx/default.conf.template:/etc/nginx/templates/default.conf.template:ro
+      - ./storage:/var/www/repo
+    depends_on:
+      - uploader
+    restart: unless-stopped
+
+volumes:
+  uploader-sotrage:
